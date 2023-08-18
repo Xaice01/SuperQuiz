@@ -1,5 +1,6 @@
 package com.example.superquiz;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,8 +33,6 @@ public class WelcomeFragment extends Fragment {
 
     }
 
-
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentWelcomeBinding.inflate(inflater, container, false);
@@ -43,6 +43,7 @@ public class WelcomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
         binding.playButton.setEnabled(false);
+
         binding.usernameEditText.addTextChangedListener(new TextWatcher(){
           @Override
           public void beforeTextChanged(CharSequence s, int start, int count, int after){
