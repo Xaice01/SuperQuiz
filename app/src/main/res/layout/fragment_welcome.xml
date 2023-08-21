@@ -6,7 +6,7 @@
     android:background="#6678DC"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".WelcomeFragment">
+    tools:context=".ui.welcome.WelcomeFragment">
 
 
 

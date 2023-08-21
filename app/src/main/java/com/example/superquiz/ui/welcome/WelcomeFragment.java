@@ -1,6 +1,5 @@
-package com.example.superquiz;
+package com.example.superquiz.ui.welcome;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,12 +10,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.superquiz.R;
 import com.example.superquiz.databinding.FragmentWelcomeBinding;
+import com.example.superquiz.ui.quiz.QuizFragment;
 
 /**
  * A simple {@link Fragment} subclass.
