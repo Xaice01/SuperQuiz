@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.superquiz.R;
+import com.example.superquiz.data.QuestionBank;
+import com.example.superquiz.data.QuestionRepository;
 
 
 /**
@@ -17,6 +19,11 @@ import com.example.superquiz.R;
  * create an instance of this fragment.
  */
 public class QuizFragment extends Fragment {
+
+    private QuizViewModel viewModel = new QuizViewModel(
+            new QuestionRepository(
+        new QuestionBank())
+    );
 
 
     public static QuizFragment newInstance() {
