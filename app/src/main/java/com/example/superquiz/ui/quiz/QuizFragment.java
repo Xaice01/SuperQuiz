@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.superquiz.R;
 import com.example.superquiz.data.Question;
@@ -26,6 +27,8 @@ import com.example.superquiz.databinding.FragmentQuizBinding;
 import com.example.superquiz.databinding.FragmentWelcomeBinding;
 import com.example.superquiz.injection.ViewModelFactory;
 
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -81,58 +84,28 @@ public class QuizFragment extends Fragment {
         binding.answer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(viewModel.isAnswerValid(0)){
-                    binding.answer1.setBackgroundColor(Color.parseColor("#388e3c"));  //vert de réponse
-                    binding.validityText.setText("💪 Good Answer !");
-                }else{
-                    binding.answer1.setBackgroundColor(Color.RED);                             //rouge de réponse
-                    binding.validityText.setText("Bad answer 😢");
-                }
-                binding.validityText.setVisibility(View.VISIBLE);
-                binding.next.setVisibility(View.VISIBLE);
+                updateAnswer(binding.answer1, 0);
             }
         });
+
         binding.answer2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(viewModel.isAnswerValid(1)){
-                    binding.answer2.setBackgroundColor(Color.parseColor("#388e3c"));  //vert de réponse
-                    binding.validityText.setText("💪 Good Answer !");
-                }else{
-                    binding.answer2.setBackgroundColor(Color.RED);                             //rouge de réponse
-                    binding.validityText.setText("Bad answer 😢");
-                }
-                binding.validityText.setVisibility(View.VISIBLE);
-                binding.next.setVisibility(View.VISIBLE);
+                updateAnswer(binding.answer2, 1);
             }
         });
 
         binding.answer3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(viewModel.isAnswerValid(2)){
-                    binding.answer3.setBackgroundColor(Color.parseColor("#388e3c"));  //vert de réponse
-                    binding.validityText.setText("💪 Good Answer !");
-                }else{
-                    binding.answer3.setBackgroundColor(Color.RED);                             //rouge de réponse
-                    binding.validityText.setText("Bad answer 😢");
-                }
-                binding.validityText.setVisibility(View.VISIBLE);
-                binding.next.setVisibility(View.VISIBLE);
+                updateAnswer(binding.answer3, 2);
             }
         });
+
         binding.answer4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(viewModel.isAnswerValid(3)){
-                    binding.answer4.setBackgroundColor(Color.parseColor("#388e3c"));  //vert de réponse
-                    binding.validityText.setText("💪 Good Answer !");
-                }else{
-                    binding.answer4.setBackgroundColor(Color.RED);                             //rouge de réponse
-                    binding.validityText.setText("Bad answer 😢");
-                }
-                binding.validityText.setVisibility(View.VISIBLE);
-                binding.next.setVisibility(View.VISIBLE);
+                updateAnswer(binding.answer4, 3);
             }
         });
     }
@@ -144,5 +117,30 @@ public class QuizFragment extends Fragment {
         binding.answer2.setText(question.getChoiceList().get(1));
         binding.answer3.setText(question.getChoiceList().get(2));
         binding.answer4.setText(question.getChoiceList().get(3));
+    }
+
+    private void updateAnswer(Button button, Integer index){
+        showAnswerValidity(button, index);
+        enableAllAnswers(false);
+        binding.next.setVisibility(View.VISIBLE);
+    }
+
+    private void showAnswerValidity(Button button, Integer index){
+        Boolean isValid = viewModel.isAnswerValid(index);
+        if (isValid) {
+            button.setBackgroundColor(Color.parseColor("#388e3c")); // dark green
+            binding.validityText.setText("Good Answer ! 💪");
+        } else {
+            button.setBackgroundColor(Color.RED);
+            binding.validityText.setText("Bad answer 😢");
+        }
+        binding.validityText.setVisibility(View.VISIBLE);
+    }
+
+    private void enableAllAnswers(Boolean enable){
+        List<Button> allAnswers = Arrays.asList(binding.answer1, binding.answer2, binding.answer3, binding.answer4);
+        allAnswers.forEach( answer -> {
+            answer.setEnabled(enable);
+        });
     }
 }
