@@ -137,6 +137,7 @@ public class QuizFragment extends Fragment {
                         viewModel.nextQuestion();
                         resetQuestion();
                 }
+                binding.next.setVisibility(View.INVISIBLE);
 
             }
         });
