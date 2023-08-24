@@ -204,5 +204,5 @@ public class QuizFragment extends Fragment {
         fragmentTransaction.replace(R.id.container,welcomeFragment);
         fragmentTransaction.commit();
     }
-} //test Head
+} //test Head (if branch ok ?) delete
 
