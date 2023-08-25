@@ -1,14 +1,15 @@
 package com.example.superquiz.ui.quiz;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorLong;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -17,9 +18,18 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+
 import com.example.superquiz.R;
 import com.example.superquiz.data.Question;
+import com.example.superquiz.data.QuestionBank;
+import com.example.superquiz.data.QuestionRepository;
 import com.example.superquiz.databinding.FragmentQuizBinding;
+import com.example.superquiz.databinding.FragmentWelcomeBinding;
 import com.example.superquiz.injection.ViewModelFactory;
 import com.example.superquiz.ui.welcome.WelcomeFragment;
 
@@ -204,5 +214,4 @@ public class QuizFragment extends Fragment {
         fragmentTransaction.replace(R.id.container,welcomeFragment);
         fragmentTransaction.commit();
     }
-} //test Head (if branch ok ?) delete
-
+} //fin
